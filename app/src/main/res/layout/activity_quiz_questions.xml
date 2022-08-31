@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:textColor="#363A43"
+            android:textColor="#0953F8"
             android:textSize="22sp"
             android:text="Which animal is this?"/>
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:indeterminate="false"
-                android:max="10"
+                android:max="21"
                 android:minHeight="50dp"
                 android:progress="0" />
 
@@ -126,7 +126,7 @@
             android:layout_margin="10dp"
             android:background="#2B63F1"
             android:text="SUBMIT"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"/>
 

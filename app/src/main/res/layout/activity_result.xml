@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#79BCC5"
+    android:background="@drawable/bg_ground"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="20dp"
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Result"
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -32,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Hey,Congragutations"
-        android:textColor="@android:color/white"
+        android:text="Hey,Congragulations"
+        android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:textColor="@android:color/white"
+        android:textColor="#FFE609"
         android:textSize="22sp"
         android:textStyle="bold"
         tools:text="Username" />

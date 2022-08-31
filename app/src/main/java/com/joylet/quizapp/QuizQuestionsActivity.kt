@@ -1,5 +1,6 @@
 package com.joylet.quizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -15,10 +16,13 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mQuestionList:ArrayList<Question>? = null
     private var mSelectedOptionPosition :Int = 0
     private var mCorrectAnswers:Int = 0
+    private var mUserName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         val option_one : TextView = findViewById(R.id.option_one)
         val option_two : TextView = findViewById(R.id.option_two)
@@ -121,17 +125,22 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         mCurrentPosition <= mQuestionList!!.size ->{
                             setQuestion()
                         }else -> {
-                            Toast.makeText(this, "You have successfully completed the Quiz",Toast.LENGTH_SHORT).show()
+                           val intent = Intent(this,ResultActivity::class.java)
+                           intent.putExtra(Constants.USER_NAME,mUserName)
+                           intent.putExtra(Constants.CORRECT_ANSWERS,mCorrectAnswers)
+                           intent.putExtra(Constants.TOTAL_QUESTION,mQuestionList!!.size)
+                           startActivity(intent)
+                           finish()
                         }
                     }
                 }else{
                     val question = mQuestionList?.get(mCurrentPosition -1)
                     if(question!!.correctAnswer != mSelectedOptionPosition){
                         answerView(mSelectedOptionPosition,R.drawable.wrong_option_border_bg)
-                    }else{
+                    }else {
                         mCorrectAnswers++
+                        answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                     }
-                    answerView(question.correctAnswer,R.drawable.correct_option_border_bg)
 
                     if(mCurrentPosition == mQuestionList!!.size){
                         btn_submit.text = "FINISH"
@@ -175,7 +184,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
      private fun selectedOptionView(textView: TextView,
                                     selectedOptionNum: Int){
          defaultOptionView()
-         mCurrentPosition = selectedOptionNum
+         mSelectedOptionPosition = selectedOptionNum
          textView.setTextColor(Color.parseColor("#363A43"))
          textView.setTypeface(textView.typeface, Typeface.BOLD)
          textView.background = ContextCompat.getDrawable(
